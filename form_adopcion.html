@@ -5,18 +5,46 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <h2>Llena el formulario :D</h2>
+    <h2>Llena el formulario con la información que te preguntaremos, por favor :D</h2>
+    
     <form id="adop-form-first" action="" method="post">
+        <h3>¿Dónde?:</h3>
         <label for="lregion">Region:</label><br>
         <select id="region" >
-        </select>
-        <br>
+        </select><br>
         <label for="lcomuna">Comuna:</label><br>
         <select id="comuna" >
-        </select>
+        </select><br>
         <label for="lsector">Sector:</label><br>
         <input type="text" id="sector">
         <br>
+        <h3>¿Contacto de esta publicación?:</h3>
+        <label for="lnombrehumanopersona">Nombre:</label><br>
+        <input type="text" id="nombrehumanopersona">
+        <label for="lemail">Email</label><br>
+        <input type="email" id="email">
+        <label for="lnumerocelular">Numero de celular (Maximo 5)</label><br>
+        <input type="text" id="lnumerocelular">
+        <label for="lredsocialdepreferencia">contactar por</label><br>
+        <select id="redsocialdepreferencia" >
+        </select><br>
+        <h3>¿Qué mascota ofrece en adopción?:</h3>
+        <label for="ltipomascota">contactar por</label><br>
+        <select id="tipomascota" >
+        </select>
+        <label for="lcantidadanimalito">Cantidad de animalitos</label><br>
+        <input type="number" id="cantidadanimalito">
+        <label for="lage">Edad</label><br>
+        <input type="number" id="age">
+        <label for="unidadmedidaedad">Unidad de medida de la edad</label><br>
+        <select id="unidadmedidaedad" >
+        </select><br>
+        <label for="lfecha">Selecciona fecha en la cual tengas disponible</label><br>
+        <input type="datetime-local" id="fecha">
+        <label for="lfoto">Agregar fotos</label><br>
+        <input type="file" id="foto">
+                
+
         <button type="button" id="submit-adop-btn">Enviar</a>
         </form>
     </body>

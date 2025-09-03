@@ -67,7 +67,7 @@ let region_comuna = {
     ]
 };
 const displayComunas = () => {
-    console.log("whatupnigga");
+    console.log("whatupn*gga");
     var region = document.getElementById("region");
     var arr = region.value.split("_");
     var index = arr[2];
