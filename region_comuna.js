@@ -66,8 +66,29 @@ let region_comuna = {
         }
     ]
 };
+let opcionesRedSocialDeContacto = ["whatsapp","telegram","instagram","tiktok","otro"];
+
+const validarNumeroCelular = (numCelular) =>{
+    if (!numCelular) {
+        return False
+    }
+    let re = /^[+]\d{3}[.]\d{8}$/;
+    let formatValid = re.test(numCelular);
+    return formatValid;
+}
+
+const fillSocialDeContacto = () => {
+    var redsocial = document.getElementById("redsocialdepreferencia");
+    var str = '';
+    for(const index in opcionesRedSocialDeContacto){
+        str+=  `<option value="redsocial_id_${index}">` + opcionesRedSocialDeContacto[index] + "</option>";
+    }
+    redsocial.innerHTML = str;
+}
+
+
 const displayComunas = () => {
-    console.log("whatupn*gga");
+    console.log("whatupnigga");
     var region = document.getElementById("region");
     var arr = region.value.split("_");
     var index = arr[2];
@@ -93,6 +114,7 @@ const fill_regions = () => {
 }
 
 fill_regions();
+fillSocialDeContacto();
 var regopts = document.getElementById("region");
 regopts.addEventListener("input",displayComunas);
 
