@@ -67,7 +67,8 @@ let region_comuna = {
     ]
 };
 let opcionesRedSocialDeContacto = ["whatsapp","telegram","instagram","tiktok","otro"];
-
+let TipoMascota = ["Perro","Gato"];
+let UMedidaTiempo = ["Meses","Años"];
 const validarNumeroCelular = (numCelular) =>{
     if (!numCelular) {
         return False
@@ -77,13 +78,27 @@ const validarNumeroCelular = (numCelular) =>{
     return formatValid;
 }
 
-const fillSocialDeContacto = () => {
-    var redsocial = document.getElementById("redsocialdepreferencia");
-    var str = '';
-    for(const index in opcionesRedSocialDeContacto){
-        str+=  `<option value="redsocial_id_${index}">` + opcionesRedSocialDeContacto[index] + "</option>";
+const fillAnyType = (Array,NameOfElement) => {
+    var html_block = document.getElementById(NameOfElement);
+    let str = '';
+    for(const index in Array){
+        str += `<option value="mascota_id_${index}">` + Array[index] + "</option>";
     }
-    redsocial.innerHTML = str;
+    html_block.innerHTML = str;
+    console.log(str);
+}
+
+const fillTipoMascota = () => {
+    fillAnyType(TipoMascota,"tipomascota");
+}
+
+
+const fillSocialDeContacto = () => {
+    fillAnyType(opcionesRedSocialDeContacto,"redsocialdepreferencia");
+}
+
+const fillMedidaTiempo = () => {
+    fillAnyType(UMedidaTiempo,"unidadmedidaedad");
 }
 
 
@@ -94,7 +109,7 @@ const displayComunas = () => {
     var index = arr[2];
     //comunas es un arreglo de diccionarios
     var comunas = region_comuna["regiones"][index]["comunas"];
-    var str = '';
+    let str = '';
     for(const index in comunas){
         str+=  `<option value="comuna_id_${index}">` + comunas[index].nombre + "</option>";    
     }
@@ -105,7 +120,7 @@ const displayComunas = () => {
 const fill_regions = () => {
     var regiones = region_comuna["regiones"];
     var Region = document.getElementById("region");
-    var str = '';
+    let str = '';
     for (const index in regiones){
         str+=  `<option value="region_id_${index}">` + regiones[index].nombre + "</option>";
     }  
@@ -113,8 +128,11 @@ const fill_regions = () => {
     //console.log(Region.innerHTML);
 }
 
+
+fillMedidaTiempo();
 fill_regions();
 fillSocialDeContacto();
+fillTipoMascota(); 
 var regopts = document.getElementById("region");
 regopts.addEventListener("input",displayComunas);
 
