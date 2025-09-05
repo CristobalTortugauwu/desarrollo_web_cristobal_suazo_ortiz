@@ -53,9 +53,15 @@
         <!-- FECHA -->
         <label for="lfecha">Selecciona fecha en la cual tengas disponible</label>
         <input type="datetime-local" id="fecha"><br>
-        <label for="lfoto">Agregar fotos</label>
-        <input type="file" id="foto"><br>
-        <button type="button" id="submit-adop-btn">Enviar</a>
+        <!-- DESCRIPCIONCION -->
+        <textarea name="descripcion" id="descripcion" rows="10" cols="50"></textarea><br>
+        <!-- FOTOSS -->
+        <label for="lfotos">Agregar fotos</label>
+        <div id="div-fotos" data-counter="1">
+            <input type="file" id="foto_1"><br>
+        </div>
+        <button type="button" id="agregar-foto-btn">Añadir nueva foto</button> <br>
+        <button type="button" id="submit-adop-btn" >Enviar</button>
         </form>
     </body>
 <script lang="javascript" src="region_comuna.js"></script>

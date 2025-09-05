@@ -122,6 +122,24 @@ const validarNumero = (numero) => {
     let res = numero>=1;
     return res;
 }
+
+
+//TODO: ¿¿¿¿que hace esto???? Laexcepcion
+const validarFecha = (fecha) =>{
+    if(!fecha){
+        return false;
+    }
+    console.log(fecha);
+}
+
+const validarFotos = (fotos) => {
+    if(!fotos){
+        return false;
+    }
+    var counter = fotos.getAttribute("data-counter")<=5;
+    return counter;
+}
+
 const fillAnyType = (Array,NameOfElement) => {
     var html_block = document.getElementById(NameOfElement);
     let str = '';
@@ -172,7 +190,15 @@ const fill_regions = () => {
 }
 
 
-
+const agregarFile = () =>{
+    console.log("sexosexoenagregarFile");
+    var div_fot = document.getElementById("div-fotos");
+    var counter = div_fot.getAttribute("data-counter");
+    counter++;
+    div_fot.setAttribute("data-counter",counter);
+    console.log(counter);
+    div_fot.innerHTML+= `<input type="file" id="foto_${counter}"><br>`;
+}
 
 
 fillMedidaTiempo();
@@ -180,6 +206,8 @@ fill_regions();
 fillSocialDeContacto();
 fillTipoMascota(); 
 var regopts = document.getElementById("region");
+var agregarFotoBoton = document.getElementById("agregar-foto-btn");
+agregarFotoBoton.addEventListener("click",agregarFile);
 regopts.addEventListener("input",displayComunas);
 
 //var buttform1 = document.getElementById("submit-adop-btn");
