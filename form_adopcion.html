@@ -19,7 +19,7 @@
         </select><br>
         <!-- SECTOR -->   
         <label for="lsector">Sector:</label>
-        <input type="text" id="sector">
+        <input type="text" id="sector" maxlength="100">
         <br>
         <h3>¿Contacto de esta publicación?:</h3>
         <!-- NOMBRE -->
@@ -40,19 +40,21 @@
         <label for="ltipomascota">Tipo de mascota</label>
         <select id="tipomascota" >
         </select><br>
+        <!-- CANTIDAD POKEMON -->
         <label for="lcantidadanimalito">Cantidad de animalitos</label>
-        <input type="number" id="cantidadanimalito"><br>
+        <input type="number" id="cantidadanimalito" min="1"><br>
+        <!-- EDADDDD -->
         <label for="lage">Edad</label>
-        <input type="number" id="age"><br>
+        <input type="number" id="age" min="1"><br>
+        <!-- UNIDAD DE MEDIDA EDAD -->
         <label for="lunidadmedidaedad">Unidad de medida de la edad</label>
         <select id="unidadmedidaedad" >
         </select><br>
+        <!-- FECHA -->
         <label for="lfecha">Selecciona fecha en la cual tengas disponible</label>
         <input type="datetime-local" id="fecha"><br>
         <label for="lfoto">Agregar fotos</label>
         <input type="file" id="foto"><br>
-                
-
         <button type="button" id="submit-adop-btn">Enviar</a>
         </form>
     </body>

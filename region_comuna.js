@@ -69,15 +69,59 @@ let region_comuna = {
 let opcionesRedSocialDeContacto = ["whatsapp","telegram","instagram","tiktok","otro"];
 let TipoMascota = ["Perro","Gato"];
 let UMedidaTiempo = ["Meses","Años"];
+
+const validarSector = (sector) =>{
+    if (!sector){
+        return false;
+    }
+    let res = sector.length>100;
+    return res;
+}
+
+const validarNombre = (nombre) =>{
+    if(!nombre){
+        return false;
+    }
+    let res_lim_sup = nombre.length<201;
+    let res_lim_inf = nombre.length>=3;
+    return res_lim_sup && res_lim_inf;
+}
+
+const validarEmail = (email) => {
+    if(!email){
+        return false;
+    }
+    let re = /^([\w.])+@(\w+.)+\w+$/;
+    let formatValid = re.test(email);
+    let lengthValid = email.length<=100;
+    return formatValid && lengthValid;
+}
+
 const validarNumeroCelular = (numCelular) =>{
     if (!numCelular) {
-        return False
+        return false;
     }
-    let re = /^[+]\d{3}[.]\d{8}$/;
+    let re = /^[+]\d{3}[.]\d{8}/;
     let formatValid = re.test(numCelular);
     return formatValid;
 }
 
+//TODO validacion contactar por
+
+const validarOpcion = (opcion) =>{
+    if(!opcion){
+        return false;
+    }
+    return true;
+}
+//sirve para Edad y cantidad de animalitos
+const validarNumero = (numero) => {
+    if(!numero){
+        return false;
+    }
+    let res = numero>=1;
+    return res;
+}
 const fillAnyType = (Array,NameOfElement) => {
     var html_block = document.getElementById(NameOfElement);
     let str = '';
@@ -91,7 +135,6 @@ const fillAnyType = (Array,NameOfElement) => {
 const fillTipoMascota = () => {
     fillAnyType(TipoMascota,"tipomascota");
 }
-
 
 const fillSocialDeContacto = () => {
     fillAnyType(opcionesRedSocialDeContacto,"redsocialdepreferencia");
@@ -127,6 +170,9 @@ const fill_regions = () => {
     Region.innerHTML = str; 
     //console.log(Region.innerHTML);
 }
+
+
+
 
 
 fillMedidaTiempo();
