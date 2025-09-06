@@ -306,7 +306,7 @@ const validarForm = () =>{
         submitButton.style.marginRight = "10px";
         submitButton.addEventListener("click", () => {
           finalBox.hidden = false;
-          validationBox.hidden = false;
+          validationBox.hidden = true;
           msgFinalBox.innerText = "Hemos recibido la información de adopción, muchas gracias y suerte!";
         });
 
@@ -326,8 +326,6 @@ const validarForm = () =>{
         validationBox.hidden = false;
   }
 }
-
-
 
 var regopts = document.getElementById("region");
 var agregarFotoBoton = document.getElementById("agregar-foto-btn");
