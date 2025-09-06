@@ -74,7 +74,7 @@ const validarSector = (sector) =>{
     if (!sector){
         return false;
     }
-    let res = sector.length>100;
+    let res = sector.length<101;
     return res;
 }
 
@@ -101,7 +101,7 @@ const validarNumeroCelular = (numCelular) =>{
     if (!numCelular) {
         return false;
     }
-    let re = /^[+]\d{3}[.]\d{8}/;
+    let re = /^[+]\d{3}[.]\d{8}$/;
     let formatValid = re.test(numCelular);
     return formatValid;
 }
@@ -129,37 +129,46 @@ const validarFecha = (fecha) =>{
     if(!fecha){
         return false;
     }
-    console.log(fecha);
+    let re = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/;
+    let formatValid = re.test(fecha);
+    return formatValid
 }
 
 const validarFotos = (fotos) => {
     if(!fotos){
         return false;
     }
-    var counter = fotos.getAttribute("data-counter")<=5;
+    var counter = fotos<=5;
+    //por ahora solo veamos la cantidad, dps nos preocupamos del tipo
+    //for (let i =0;i<fotos;i++){
+    //    let str = `foto_${i+1}`;
+    //    let file = document.getElementById(str).value;
+    //    console.log(file,file.type);   
+    //} 
     return counter;
 }
 
-const fillAnyType = (Array,NameOfElement) => {
+
+
+const fillAnyType = (Array,NameOfElement, Name) => {
     var html_block = document.getElementById(NameOfElement);
     let str = '';
     for(const index in Array){
-        str += `<option value="mascota_id_${index}">` + Array[index] + "</option>";
+        str += `<option value="${Name}_id_${index}">` + Array[index] + "</option>";
     }
     html_block.innerHTML = str;
-    console.log(str);
 }
 
 const fillTipoMascota = () => {
-    fillAnyType(TipoMascota,"tipomascota");
+    fillAnyType(TipoMascota,"tipomascota", "mascota");
 }
 
 const fillSocialDeContacto = () => {
-    fillAnyType(opcionesRedSocialDeContacto,"redsocialdepreferencia");
+    fillAnyType(opcionesRedSocialDeContacto,"redsocialdepreferencia", "redsocial");
 }
 
 const fillMedidaTiempo = () => {
-    fillAnyType(UMedidaTiempo,"unidadmedidaedad");
+    fillAnyType(UMedidaTiempo,"unidadmedidaedad", "unidadmedida");
 }
 
 
@@ -192,7 +201,7 @@ const fill_regions = () => {
 
 const agregarFile = () =>{
     console.log("sexosexoenagregarFile");
-    var div_fot = document.getElementById("div-fotos");
+    var div_fot = document.getElementById("divfotos");
     var counter = div_fot.getAttribute("data-counter");
     counter++;
     div_fot.setAttribute("data-counter",counter);
@@ -200,13 +209,138 @@ const agregarFile = () =>{
     div_fot.innerHTML+= `<input type="file" id="foto_${counter}"><br>`;
 }
 
+const validarForm = () =>{
+    let form = document.getElementById("adop-form-first");
+    let region = form.region.value;
+    let comuna = form.comuna.value;
+    let sector = form.sector.value;
+    let nombre = form.nombrehumanopersona.value;
+    let email = form.email.value;
+    let numCel = form.numerocelular.value;
+    let redSocial = form.redsocialdepreferencia.value;
+    let tipo = form.tipomascota.value;
+    let cantidad = form.cantidadanimalito.value;
+    let edad = form.age.value;
+    let unidadmedida = form.unidadmedidaedad.value;
+    let fecha = form.fecha.value;
+    let descripcion = form.descripcion.value;
+    let fotos = document.getElementById("divfotos").getAttribute("data-counter");
+    let invalidInputs = [];
+    let isValid = true;
+    const setInvalidInput = (inputName) =>{
+        invalidInputs.push(inputName);
+        isValid &&= false;
+    }
+    if (!validarOpcion(region)){
+        setInvalidInput("Region");
+    }
+    if (!validarOpcion(comuna)){
+        setInvalidInput("Comuna");
+    }
+    if (!validarSector(sector)){
+        setInvalidInput("Sector");
+    }
+    if (!validarNombre(nombre)){
+        setInvalidInput("Nombre");
+    }
+    if (!validarEmail(email)){
+        setInvalidInput("Email");
+    }
+    if (!validarNumeroCelular(numCel)){
+        setInvalidInput("Numero de Celular");
+    }
+    if (!validarOpcion(redSocial)){
+        setInvalidInput("Red social");
+    }
+    if (!validarOpcion(tipo)){
+        setInvalidInput("Tipo animal");
+    }
+    if (!validarNumero(edad)){
+        setInvalidInput("Edad");
+    }
+    if (!validarNumero(cantidad)){
+        setInvalidInput("Cantidad");
+    }
+    if (!validarOpcion(unidadmedida)){
+        setInvalidInput("Unidad de medida del tiempo");
+    }
+    if (!validarFecha(fecha)){
+        setInvalidInput("Fecha");
+    }
+    if (!validarFotos(fotos)){
+        setInvalidInput("Fotos, son máximo 5");
+    }
+    
+    let validationBox = document.getElementById("val-box");
+    let validationMessageElem = document.getElementById("val-msg");
+    let validationListElem = document.getElementById("val-list");
+    let finalBox = document.getElementById("val-box-final-msg");
+    let msgFinalBox = document.getElementById("val-msg-final");
+    if(!isValid){
+        let str = "";
 
-fillMedidaTiempo();
-fill_regions();
-fillSocialDeContacto();
-fillTipoMascota(); 
+        for(const index in invalidInputs){
+            str +=  `<li>${invalidInputs[index]}</li>`;
+        }
+        validationListElem.innerHTML = str;
+        
+        // aplicar estilos de error
+        validationBox.style.backgroundColor = "#ffdddd";
+        validationBox.style.borderLeftColor = "#f44336";
+        validationBox.hidden = false;
+        validationMessageElem.innerText="Los siguientes campos necesitan ser rellenados o son inválidos"
+    }
+    else{
+        form.style.display = "none";
+        // establecer mensaje de éxito
+        validationMessageElem.innerText = "¿Está seguro que desea agregar este aviso de adopción?";
+        validationListElem.textContent = "";
+
+        // aplicar estilos de éxito
+        validationBox.style.backgroundColor = "#ddffdd";
+        validationBox.style.borderLeftColor = "#4CAF50";
+
+        // Agregar botones para enviar el formulario o volver
+        let submitButton = document.createElement("button");
+        submitButton.innerText = "Sí, estoy seguro";
+        submitButton.style.marginRight = "10px";
+        submitButton.addEventListener("click", () => {
+          finalBox.hidden = false;
+          validationBox.hidden = false;
+          msgFinalBox.innerText = "Hemos recibido la información de adopción, muchas gracias y suerte!";
+        });
+
+        let backButton = document.createElement("button");
+        backButton.innerText = "No, no estoy seguro, quiero volver al formulario";
+        backButton.addEventListener("click", () => {
+          // Mostrar el formulario nuevamente
+          form.style.display = "block";
+          validationBox.hidden = true;
+          finalBox.hidden = true;
+        });
+
+        validationListElem.appendChild(submitButton);
+        validationListElem.appendChild(backButton);
+
+        // hacer visible el mensaje de validación
+        validationBox.hidden = false;
+  }
+}
+
+
+
 var regopts = document.getElementById("region");
 var agregarFotoBoton = document.getElementById("agregar-foto-btn");
+var loadFormDataBoton = document.getElementById("submit-adop-btn");
+var regionOptions = document.getElementById("region");
+var redsocialOptions = document.getElementById("redsocialdepreferencia");
+var tipomascotaOptions = document.getElementById("tipomascota");
+var UMTOptions = document.getElementById("unidadmedidaedad");
+UMTOptions.addEventListener("click",fillMedidaTiempo);
+tipomascotaOptions.addEventListener("click",fillTipoMascota);
+redsocialOptions.addEventListener("click",fillSocialDeContacto);
+regionOptions.addEventListener("click",fill_regions);
+loadFormDataBoton.addEventListener("click",validarForm);
 agregarFotoBoton.addEventListener("click",agregarFile);
 regopts.addEventListener("input",displayComunas);
 

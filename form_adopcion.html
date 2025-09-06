@@ -6,7 +6,13 @@
 </head>
 <body>
     <h2>Llena el formulario con la información que te preguntaremos, por favor :D</h2>
-    
+    <div id="val-box" hidden>
+        <h2 id="val-msg"></h2>
+        <ul id="val-list"></ul>
+    </div>
+        <div id="val-box-final-msg" hidden>
+        <h2 id="val-msg-final"></h2>
+    </div>
     <form id="adop-form-first" action="" method="post">
         <h3>¿Dónde?:</h3>
         <!-- REGION -->
@@ -29,10 +35,10 @@
         <label for="lemail">Email</label>
         <input type="email" id="email"><br>
         <!-- NUMERODECELUUUUU -->
-        <label for="lnumerocelular">Numero de celular (Maximo 5)</label>
-        <input type="text" id="lnumerocelular"><br>
+        <label for="lnumerocelular">Numero de celular</label>
+        <input type="text" id="numerocelular"><br>
         <!-- REDSOCIALDEPREFERENCIACIENCIAELOCUENCIAPACIENCIA -->
-        <label for="lredsocialdepreferencia">contactar por</label>
+        <label for="lredsocialdepreferencia">contactar por  (Maximo 5)</label>
         <select id="redsocialdepreferencia" >
         </select><br>
         <h3>¿Qué mascota ofrece en adopción?:</h3>
@@ -57,11 +63,11 @@
         <textarea name="descripcion" id="descripcion" rows="10" cols="50"></textarea><br>
         <!-- FOTOSS -->
         <label for="lfotos">Agregar fotos</label>
-        <div id="div-fotos" data-counter="1">
+        <div id="divfotos" data-counter="1">
             <input type="file" id="foto_1"><br>
         </div>
         <button type="button" id="agregar-foto-btn">Añadir nueva foto</button> <br>
-        <button type="button" id="submit-adop-btn" >Enviar</button>
+        <button type="button" id="submit-adop-btn" >Agregar este aviso de adopción</button>
         </form>
     </body>
 <script lang="javascript" src="region_comuna.js"></script>
