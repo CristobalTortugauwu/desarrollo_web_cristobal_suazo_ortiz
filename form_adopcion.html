@@ -11,65 +11,67 @@
         <ul id="val-list"></ul>
     </div>
         <div id="val-box-final-msg" hidden>
-            <button type="button" id="volver-inicio"><a href="view.html">Volver al inicio</a></button> <br>
+            <button type="button" id="volver-inicio" ><a href="view.html">Volver al inicio</a></button> <br>
         <h2 id="val-msg-final"></h2>
     </div>
-    <form id="adop-form-first" action="" method="post">
+    <form id="adop-form-first" method="post">
         <h3>¿Dónde?:</h3>
         <!-- REGION -->
-        <label for="lregion">Region:</label>
-        <select id="region" >    
-        </select><br>
+        <label >Region:
+            <select id="region" >    
+            </select><br>
+        </label>
         <!-- COMUNA -->
-        <label for="lcomuna">Comuna:</label>
+        <label>Comuna:</label>
         <select id="comuna" >
         </select><br>
         <!-- SECTOR -->   
-        <label for="lsector">Sector:</label>
+        <label >Sector:</label>
         <input type="text" id="sector" maxlength="100">
         <br>
         <h3>¿Contacto de esta publicación?:</h3>
         <!-- NOMBRE -->
-        <label for="lnombrehumanopersona">Nombre:</label>
+        <label >Nombre:</label>
         <input type="text" id="nombrehumanopersona"><br>
         <!-- EMAIL -->
-        <label for="lemail">Email</label>
+        <label >Email</label>
         <input type="email" id="email"><br>
         <!-- NUMERODECELUUUUU -->
-        <label for="lnumerocelular">Numero de celular</label>
+        <label >Numero de celular</label>
         <input type="text" id="numerocelular"><br>
         <!-- REDSOCIALDEPREFERENCIACIENCIAELOCUENCIAPACIENCIA -->
-        <label for="lredsocialdepreferencia">contactar por  (Maximo 5)</label>
+        <label >contactar por  (Maximo 5)</label>
         <select id="redsocialdepreferencia" >
         </select><br>
         <h3>¿Qué mascota ofrece en adopción?:</h3>
         <!-- TIPOPOKEMON -->
-        <label for="ltipomascota">Tipo de mascota</label>
+        <label>Tipo de mascota</label>
         <select id="tipomascota" >
         </select><br>
         <!-- CANTIDAD POKEMON -->
-        <label for="lcantidadanimalito">Cantidad de animalitos</label>
+        <label >Cantidad de animalitos</label>
         <input type="number" id="cantidadanimalito" min="1"><br>
         <!-- EDADDDD -->
-        <label for="lage">Edad</label>
+        <label >Edad</label>
         <input type="number" id="age" min="1"><br>
         <!-- UNIDAD DE MEDIDA EDAD -->
-        <label for="lunidadmedidaedad">Unidad de medida de la edad</label>
+        <label >Unidad de medida de la edad</label>
         <select id="unidadmedidaedad" >
         </select><br>
         <!-- FECHA -->
-        <label for="lfecha">Selecciona fecha en la cual tengas disponible</label>
+        <label >Selecciona fecha en la cual tengas disponible</label>
         <input type="datetime-local" id="fecha"><br>
         <!-- DESCRIPCIONCION -->
+        <label >Descripcion</label>
         <textarea name="descripcion" id="descripcion" rows="10" cols="50"></textarea><br>
         <!-- FOTOSS -->
-        <label for="lfotos">Agregar fotos</label>
+        <label >Agregar fotos</label>
         <div id="divfotos" data-counter="1">
             <input type="file" id="foto_1"><br>
         </div>
         <button type="button" id="agregar-foto-btn">Añadir nueva foto</button> <br>
         <button type="button" id="submit-adop-btn" >Agregar este aviso de adopción</button>
         </form>
+    <script language="javascript" src="region_comuna.js"></script>
     </body>
-<script lang="javascript" src="region_comuna.js"></script>
 </html>
