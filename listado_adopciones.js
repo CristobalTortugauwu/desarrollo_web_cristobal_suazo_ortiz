@@ -22,8 +22,8 @@ const volver_al_inicio = () => {
     window.location.href="../../view.html";
 }
 
-
 var BotonVolverAtras = document.getElementById("volver-listado-btn");
 var BotonVolverInicio = document.getElementById("volver-inicio-btn");
+
 BotonVolverAtras.addEventListener("click",volver_a_listado);
 BotonVolverInicio.addEventListener("click",volver_al_inicio);

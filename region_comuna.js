@@ -284,7 +284,6 @@ const validarForm = () =>{
         }
         validationListElem.innerHTML = str;
         
-        // aplicar estilos de error
         validationBox.style.backgroundColor = "#ffdddd";
         validationBox.style.borderLeftColor = "#f44336";
         validationBox.hidden = false;
@@ -292,15 +291,10 @@ const validarForm = () =>{
     }
     else{
         form.style.display = "none";
-        // establecer mensaje de éxito
         validationMessageElem.innerText = "¿Está seguro que desea agregar este aviso de adopción?";
         validationListElem.textContent = "";
-
-        // aplicar estilos de éxito
         validationBox.style.backgroundColor = "#ddffdd";
         validationBox.style.borderLeftColor = "#4CAF50";
-
-        // Agregar botones para enviar el formulario o volver
         let submitButton = document.createElement("button");
         submitButton.innerText = "Sí, estoy seguro";
         submitButton.style.marginRight = "10px";
@@ -313,7 +307,6 @@ const validarForm = () =>{
         let backButton = document.createElement("button");
         backButton.innerText = "No, no estoy seguro, quiero volver al formulario";
         backButton.addEventListener("click", () => {
-          // Mostrar el formulario nuevamente
           form.style.display = "block";
           validationBox.hidden = true;
           finalBox.hidden = true;
